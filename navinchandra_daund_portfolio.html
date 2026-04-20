@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navinchandra Daund — Cyber Security Professional</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0d1b2a;
+    --navy-mid: #1a2d42;
+    --navy-light: #243b55;
+    --accent: #00d4aa;
+    --accent-dim: #00a88550;
+    --accent-glow: #00d4aa20;
+    --text-primary: #e8f4f0;
+    --text-secondary: #8fafc4;
+    --text-muted: #5a7a8e;
+    --border: #1e3448;
+    --card-bg: #111f2e;
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--navy);
+    color: var(--text-primary);
+    line-height: 1.7;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+
+  /* Grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,170,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,170,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Nav */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(13,27,42,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    color: var(--accent);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* Sections */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 5vw;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* Hero */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 100px;
+    max-width: none;
+    padding-left: 8vw;
+    padding-right: 8vw;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-glow);
+    border: 1px solid var(--accent-dim);
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 2rem;
+    width: fit-content;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  .hero-name {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name .accent { color: var(--accent); }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--text-secondary);
+    font-weight: 300;
+    max-width: 560px;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+  }
+
+  .hero-certs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .cert-badge {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-family: var(--font-display);
+  }
+
+  .cert-badge.highlight {
+    border-color: var(--accent-dim);
+    color: var(--accent);
+    background: var(--accent-glow);
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: var(--navy);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,212,170,0.3);
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    padding: 13px 28px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--accent-dim);
+    color: var(--accent);
+  }
+
+  /* Section headings */
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 3rem;
+  }
+
+  .section-divider {
+    width: 48px;
+    height: 2px;
+    background: var(--accent);
+    margin: 1rem 0 3rem;
+  }
+
+  /* About / Stats */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 4rem;
+  }
+
+  .stat-item {
+    background: var(--card-bg);
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 2.5rem;
+    color: var(--accent);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    letter-spacing: 0.03em;
+  }
+
+  .about-text {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    font-weight: 300;
+    max-width: 700px;
+  }
+
+  .about-text strong {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  /* Experience */
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    bottom: 12px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), var(--border));
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 2rem;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.4rem;
+    top: 10px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--navy);
+    box-shadow: 0 0 0 4px var(--accent-dim);
+  }
+
+  .timeline-item.muted::before {
+    background: var(--text-muted);
+    box-shadow: none;
+    border-color: var(--navy);
+  }
+
+  .timeline-date {
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-item.muted .timeline-date {
+    color: var(--text-muted);
+  }
+
+  .timeline-company {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0.15rem;
+    color: var(--text-primary);
+  }
+
+  .timeline-role {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+  }
+
+  .timeline-desc {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* Skills */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .skill-card:hover {
+    border-color: var(--accent-dim);
+    transform: translateY(-3px);
+  }
+
+  .skill-card-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: var(--accent-glow);
+    border: 1px solid var(--accent-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    font-size: 18px;
+  }
+
+  .skill-card h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: 400;
+  }
+
+  /* Certifications */
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .cert-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cert-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--accent);
+  }
+
+  .cert-card.dim::before { background: var(--text-muted); }
+
+  .cert-card h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .cert-card p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  /* Education */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .edu-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem;
+  }
+
+  .edu-degree {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .edu-school {
+    font-size: 0.88rem;
+    color: var(--accent);
+    font-weight: 400;
+    margin-bottom: 0.25rem;
+  }
+
+  .edu-year {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  /* Contact */
+  .contact-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-box::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: var(--accent-glow);
+    pointer-events: none;
+  }
+
+  .contact-box h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .contact-box p {
+    color: var(--text-secondary);
+    font-weight: 300;
+    margin-bottom: 2rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 2rem 5vw;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-weight: 300;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up {
+    animation: fadeUp 0.7s ease forwards;
+    opacity: 0;
+  }
+
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.25s; }
+  .delay-3 { animation-delay: 0.4s; }
+  .delay-4 { animation-delay: 0.55s; }
+  .delay-5 { animation-delay: 0.7s; }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    #hero { padding-left: 1.5rem; padding-right: 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+    .contact-box { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">ND</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#certs">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-tag fade-up">Available for opportunities</div>
+  <h1 class="hero-name fade-up delay-1">Navinchandra<br><span class="accent">Daund</span></h1>
+  <p class="hero-sub fade-up delay-2">Cyber Security Professional with 20+ years in IT Security Operations, SIEM, Threat Modeling, and Incident Management — currently based in Singapore.</p>
+  <div class="hero-certs fade-up delay-3">
+    <span class="cert-badge highlight">CISA</span>
+    <span class="cert-badge highlight">CISM</span>
+    <span class="cert-badge highlight">CRISC</span>
+    <span class="cert-badge">ITIL V3</span>
+    <span class="cert-badge">QualysGuard</span>
+    <span class="cert-badge">ArcSight SIEM</span>
+  </div>
+  <div class="hero-actions fade-up delay-4">
+    <a href="#contact" class="btn-primary">Get in touch →</a>
+    <a href="#experience" class="btn-ghost">View experience</a>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <p class="section-label">About</p>
+  <h2 class="section-title">Security at the core<br>of everything I do</h2>
+
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-number">20+</div>
+      <div class="stat-label">Years in IT</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">7+</div>
+      <div class="stat-label">Years as VP</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">3</div>
+      <div class="stat-label">ISACA Certifications</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Languages Spoken</div>
+    </div>
+  </div>
+
+  <p class="about-text">
+    I'm a seasoned <strong>Cyber Security Professional</strong> with deep expertise in Security Operations Center (SOC) management, SIEM threat modeling, and enterprise-wide security incident response. Currently serving as <strong>Vice President at Nomura Singapore</strong>, I contribute to global IT security initiatives while leading SOC operations across Windows, Unix, Databases, and Perimeter environments. My career spans global institutions including <strong>Nomura, NCR Corporation, and Wipro</strong>, combining technical depth with strategic leadership.
+  </p>
+</section>
+
+<!-- Experience -->
+<section id="experience">
+  <p class="section-label">Experience</p>
+  <h2 class="section-title">Career journey</h2>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <p class="timeline-date">April 2019 — Present · Singapore</p>
+      <h3 class="timeline-company">Nomura Singapore Limited</h3>
+      <p class="timeline-role">Vice President — IT Security</p>
+      <p class="timeline-desc">Managing IT SOC operations and contributing to Global IT Security initiatives for Nomura's Singapore operations. Leading SIEM-driven threat detection, incident response, and enterprise security programs.</p>
+    </div>
+
+    <div class="timeline-item">
+      <p class="timeline-date">April 2016 — April 2019 · Mumbai, India</p>
+      <h3 class="timeline-company">Nomura Services India</h3>
+      <p class="timeline-role">Vice President — EIS IT Security</p>
+      <p class="timeline-desc">Promoted to VP level to manage IT SOC and contribute to Global IT Security initiatives. Continued to build on security frameworks established in earlier roles at Nomura.</p>
+    </div>
+
+    <div class="timeline-item muted">
+      <p class="timeline-date">April 2008 — February 2014 · Mumbai</p>
+      <h3 class="timeline-company">Nomura</h3>
+      <p class="timeline-role">IT SOC Analyst — Principal Production Support</p>
+      <p class="timeline-desc">Security Events monitoring via SIEM tools, Incident Handling, Log Analysis, Vulnerability Management, and Intrusion Detection across enterprise infrastructure.</p>
+    </div>
+
+    <div class="timeline-item muted">
+      <p class="timeline-date">February 2006 — January 2008</p>
+      <h3 class="timeline-company">NCR Corporation</h3>
+      <p class="timeline-role">Level II Technical Support Specialist</p>
+      <p class="timeline-desc">Technical support for Retail Products and MFP Printers across enterprise clients.</p>
+    </div>
+
+    <div class="timeline-item muted">
+      <p class="timeline-date">February 2004 — January 2006</p>
+      <h3 class="timeline-company">Wipro BPO</h3>
+      <p class="timeline-role">Helpdesk Analyst</p>
+      <p class="timeline-desc">Frontline IT helpdesk support and technical issue resolution.</p>
+    </div>
+
+    <div class="timeline-item muted">
+      <p class="timeline-date">2002 — 2004</p>
+      <h3 class="timeline-company">Hi-Tech Computer Services (N) Pvt. Ltd.</h3>
+      <p class="timeline-role">Pre-Sales Support Executive</p>
+      <p class="timeline-desc">Commercial hardware, networking products, tender submissions for government and non-government institutions. Certified through IBM, HP, Compaq, Cisco, and D-Link programs.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Skills -->
+<section id="skills">
+  <p class="section-label">Expertise</p>
+  <h2 class="section-title">Areas of mastery</h2>
+
+  <div class="skills-grid">
+
+    <div class="skill-card">
+      <div class="skill-card-icon">🛡</div>
+      <h3>SOC & SIEM Operations</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">ArcSight ESM</span>
+        <span class="skill-tag">ArcSight Loggers</span>
+        <span class="skill-tag">Threat Modeling</span>
+        <span class="skill-tag">Event Monitoring</span>
+        <span class="skill-tag">Rule Creation</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-icon">🔍</div>
+      <h3>Incident & Vulnerability Management</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Incident Handling</span>
+        <span class="skill-tag">Log Analysis</span>
+        <span class="skill-tag">RCA</span>
+        <span class="skill-tag">QualysGuard</span>
+        <span class="skill-tag">IDS / HIPS</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-icon">🔒</div>
+      <h3>Endpoint & Perimeter Security</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Symantec AV</span>
+        <span class="skill-tag">Trend Micro</span>
+        <span class="skill-tag">Firewalls</span>
+        <span class="skill-tag">Blue Coat Proxy</span>
+        <span class="skill-tag">ProofPoint</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-icon">🔑</div>
+      <h3>Identity & Access Management</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Microsoft Active Directory</span>
+        <span class="skill-tag">RBAC</span>
+        <span class="skill-tag">BigFix Patch Mgmt</span>
+        <span class="skill-tag">Lumension BYOD</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-icon">📋</div>
+      <h3>Frameworks & Governance</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">ITIL V3</span>
+        <span class="skill-tag">COBIT</span>
+        <span class="skill-tag">BCP / DR</span>
+        <span class="skill-tag">Risk Management</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-icon">🌐</div>
+      <h3>Networking & Monitoring</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">SourceFire IDS</span>
+        <span class="skill-tag">Snort Signatures</span>
+        <span class="skill-tag">Packet Analysis</span>
+        <span class="skill-tag">Varonis</span>
+        <span class="skill-tag">Windows Patching</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Certifications -->
+<section id="certs">
+  <p class="section-label">Certifications</p>
+  <h2 class="section-title">Professional credentials</h2>
+
+  <div class="certs-grid">
+    <div class="cert-card">
+      <h4>CISA</h4>
+      <p>Certified Information Systems Auditor — ISACA</p>
+    </div>
+    <div class="cert-card">
+      <h4>CISM</h4>
+      <p>Certified Information Security Manager — ISACA</p>
+    </div>
+    <div class="cert-card">
+      <h4>CRISC</h4>
+      <p>Certified in Risk and Information Systems Control — ISACA</p>
+    </div>
+    <div class="cert-card">
+      <h4>ITIL V3 Foundation</h4>
+      <p>IT Infrastructure Library — IT Service Management</p>
+    </div>
+    <div class="cert-card dim">
+      <h4>Vulnerability Management</h4>
+      <p>QualysGuard Platform Certification</p>
+    </div>
+    <div class="cert-card dim">
+      <h4>Information Security Awareness</h4>
+      <p>2011</p>
+    </div>
+    <div class="cert-card dim">
+      <h4>Introduction to Operational Risk</h4>
+      <p>2011</p>
+    </div>
+  </div>
+</section>
+
+<!-- Education -->
+<section id="education">
+  <p class="section-label">Education</p>
+  <h2 class="section-title">Academic background</h2>
+
+  <div class="edu-grid">
+    <div class="edu-card">
+      <p class="edu-degree">MBA — Information Technology</p>
+      <p class="edu-school">Welingkar Institute of Management</p>
+      <p class="edu-year">2017 – 2019</p>
+    </div>
+    <div class="edu-card">
+      <p class="edu-degree">Bachelor of Arts — Journalism</p>
+      <p class="edu-school">Yashwantrao Chavan Maharashtra Open University</p>
+      <p class="edu-year">2010 – 2012</p>
+    </div>
+    <div class="edu-card">
+      <p class="edu-degree">DBM-IT — Business Management in IT</p>
+      <p class="edu-school">IIBMS</p>
+      <p class="edu-year">2010 – 2011</p>
+    </div>
+    <div class="edu-card">
+      <p class="edu-degree">Diploma — Journalism & Mass Communications</p>
+      <p class="edu-school">Yashwantrao Chavan Maharashtra Open University</p>
+      <p class="edu-year">2006 – 2007</p>
+    </div>
+    <div class="edu-card">
+      <p class="edu-degree">BASc — Electrical, Electronics & Communications Engineering</p>
+      <p class="edu-school">University of Pune</p>
+      <p class="edu-year">1994 – 1997</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="contact-box">
+    <h2>Let's connect</h2>
+    <p>Open to conversations about cyber security roles, collaborations, or speaking engagements.</p>
+    <div class="contact-links">
+      <a href="mailto:navin.daund@gmail.com" class="btn-primary">navin.daund@gmail.com</a>
+      <a href="https://www.linkedin.com/in/navindaund" target="_blank" class="btn-ghost">LinkedIn Profile ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Navinchandra Daund — Cyber Security Professional, Singapore</p>
+</footer>
+
+</body>
+</html>
